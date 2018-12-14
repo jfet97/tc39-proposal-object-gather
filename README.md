@@ -6,7 +6,7 @@ It's possible to gather some or all arguments into an array because there is no 
 
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
-* Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them.
+* Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them:
 
 
 ### annoying identifiers repetitions
