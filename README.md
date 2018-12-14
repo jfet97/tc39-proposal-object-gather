@@ -4,6 +4,67 @@
 This is a proposal to allow gathering one ore more __specified__ arguments into one or more objects when a function is called.
 It's possible to gather some or all arguments into an array because there is no need to provide a key for each argument: array are objects that use numeric values as keys. To enable sort of object gather in parameters lists is mandatory to provide keys.
 
+## Normal object gather
+This syntax use the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list to directly create a non constant object (identifiers in a parameter list are never constant) that gather all the arguments present into the list. 
+```js
+function F(...obj{par1, par2}) {
+  obj; // {par1: .., par2: ..}
+  arguments[0] == obj; // true
+  arguments[1] == void 0; // true
+}
+```
+Since each value passed to that function is gathered by the object and it should not be reachable except through him, the `arguments` array-like has to be modified as well.
+That function will be called as we call a function that use the array rest:
+```js
+F(arg1, arg2);
+```
+
+We can still use the array rest operator in multiple ways:
+1. After the object gather
+```js
+function F(...obj{par1, par2}, ...array) {
+  obj; // {par1: .., par2: ..}
+  array; // [.., .., .., ...]
+  arguments[0] == obj; // true
+  arguments[1] == array; // true
+  arguments[2] == void 0; // true
+}
+```
+Here the function call:
+```js
+F(arg1, arg2, arg3, arg4, arg5); 
+// 'obj' will gather arg1 and arg2
+// 'array' will gather or the other parameters
+```
+
+__But not before the object gather__:
+```js
+function F(...array, ...obj{par1, par2}) {
+    // Error: obj couldn't be populated
+}
+```
+
+2. Inside the object gather __at the bottom__ of the key list
+```js
+function F(...obj{par1, par2, ...array}) {
+  obj; // {par1: .., par2: .., array: [.., .., .., ...]}
+  arguments[0] == obj; // true
+  arguments[1] == void 0; // true
+}
+```
+Here the function call:
+```js
+F(arg1, arg2, arg3, arg4, arg5); 
+// 'obj' will gather arg1 and arg2 directly and all the other params into its 'array' prop
+```
+
+__We cannot add other parameters in the function sgnature if we use the array rest inside an object gather__
+```js
+function F(...obj{par1, par2, ...array}, ...array2) {
+    // Error: array2 obj couldn't be populated
+}
+```
+
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
 * Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them:
