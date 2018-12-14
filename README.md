@@ -9,11 +9,11 @@ This syntax use the well know gather/rest operator `...` in conjunction with the
 ```js
 function F(...obj{par1, par2}) {
   obj; // {par1: .., par2: ..}
-  arguments[0] == obj; // true
-  arguments[1] == void 0; // true
+  arguments[0] == obj.par1; // true
+  arguments[1] == obj.par2; // true
 }
 ```
-Since each value passed to that function is gathered by the object and it should not be reachable except through it, the `arguments` array-like has to be modified as well.
+Like the array rest situation, `arguments` will contain each argument.
 That function will be called as we call a function that use the array rest:
 ```js
 F(arg1, arg2);
@@ -26,9 +26,9 @@ We can still use the array rest operator in multiple ways:
 function F(...obj{par1, par2}, ...array) {
   obj; // {par1: .., par2: ..}
   array; // [.., .., .., ...]
-  arguments[0] == obj; // true
-  arguments[1] == array; // true
-  arguments[2] == void 0; // true
+  arguments[0] == obj.par1; // true
+  arguments[1] == obj.par2; // true
+  arguments[2] == array[0]; // true
 }
 ```
 Here the function call:
@@ -49,8 +49,9 @@ function F(...array, ...obj{par1, par2}) {
 ```js
 function F(...obj{par1, par2, ...array}) {
   obj; // {par1: .., par2: .., array: [.., .., .., ...]}
-  arguments[0] == obj; // true
-  arguments[1] == void 0; // true
+  arguments[0] == obj.par1; // true
+  arguments[1] == obj.par2; // true
+  arguments[2] == obj.array[0]; // true
 }
 ```
 Here the function call:
