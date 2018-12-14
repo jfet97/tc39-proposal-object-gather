@@ -13,7 +13,7 @@ function F(...obj{par1, par2}) {
   arguments[1] == void 0; // true
 }
 ```
-Since each value passed to that function is gathered by the object and it should not be reachable except through him, the `arguments` array-like has to be modified as well.
+Since each value passed to that function is gathered by the object and it should not be reachable except through it, the `arguments` array-like has to be modified as well.
 That function will be called as we call a function that use the array rest:
 ```js
 F(arg1, arg2);
