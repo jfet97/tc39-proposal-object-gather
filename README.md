@@ -62,7 +62,7 @@ F(arg1, arg2, arg3, arg4, arg5);
 __We cannot add other parameters in the function signature if we use the array rest inside an object gather:__
 ```js
 function F(...obj{par1, par2, ...array}, ...array2) {
-    // Error: array2 obj couldn't be populated
+    // Error: array2 couldn't be populated
 }
 ```
 
