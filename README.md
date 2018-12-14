@@ -10,7 +10,7 @@ It's possible to gather some or all arguments into an array because there is no 
 
 
 ### annoying identifiers repetitions
-To not change following function signature:
+To not change the function signature:
 ```js
 function F(par1, par2, par3, ..., parN){
   // function body
