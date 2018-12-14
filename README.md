@@ -18,7 +18,7 @@ That function will be called as we call a function that use the array rest:
 ```js
 F(arg1, arg2);
 ```
-
+\&nbsp;
 We can still use the array rest operator in multiple ways:
 1. After the object gather
 ```js
