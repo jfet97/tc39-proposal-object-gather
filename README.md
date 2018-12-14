@@ -57,7 +57,7 @@ function constructor(par1, par2, par3, ..., parN){
 ```
 Here we are creating and destroying in a short time an object, __copying__ each value two times: from the parameters to the object, then from the object to `this`.
 
-## How could my syntax be transpiled?
+## How could the syntax be transpiled?
 For the sake of argument we can assert that Babel could not follow a DRY approach transpiling our code, giving priority to a faster and less memory needy solution. Probably the solutions tagged with _annoying identifiers repetitions_ are the best:
 
 ### Normal object gather
