@@ -5,8 +5,8 @@ This is a proposal to allow gathering one ore more __specified__ arguments into 
 It's possible to gather some or all arguments into an array because there is no need to provide a key for each argument: array are objects that use numeric values as keys. To enable sort of object gather in parameters lists is mandatory to provide keys.
 
 ## Reasons
-• Currently this type of gather is not allowed in Javascript.
-• Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them.
+* Currently this type of gather is not allowed in Javascript.
+* Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them.
 
 
 ### annoying identifiers repetitions
