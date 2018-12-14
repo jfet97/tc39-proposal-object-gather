@@ -56,3 +56,37 @@ function constructor(par1, par2, par3, ..., parN){
 }
 ```
 Here we are creating and destroying in a short time an object, __copying__ each value two times: from the parameters to the object, then from the object to `this`.
+
+## How could my syntax be transpiled?
+For the sake of argument we can assert that Babel could not follow a DRY approach transpiling our code, giving priority to a faster and less memory needy solution. Probably the solutions tagged with _annoying identifiers repetitions_ are the best:
+
+### Normal object gather
+```js
+function F(...obj1{par1a, par1b}, ...obj2{par2a, par2b}) {
+    // function body
+}
+```
+could be transpiled into:
+```js
+function F(par1a, par1b, par2a, par2b) {
+    let obj1 = {par1a, par1b};
+    let obj2 = {par2a, par2b};
+    // function body
+}
+```
+Parameters could be reassigned so we use `let` instead of `const`.
+
+### this gather
+```js
+function F(...this{par1, par2, par3}) {
+    // function body
+}
+```
+could be transpiled into:
+```js
+function F(par1, par2, par3) {
+    this.par1 = par1;
+    this.par2 = par2;
+    this.par3 = par3;
+}
+```
