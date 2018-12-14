@@ -60,7 +60,7 @@ Here we are creating and destroying in a short time an object, __copying__ each 
 ## How could the syntax be transpiled?
 For the sake of argument we can assert that Babel could not follow a DRY approach transpiling our code, giving priority to a faster and less memory needy solution. Probably the solutions tagged with _annoying identifiers repetitions_ are the best:
 
-### Normal object gather
+### normal object gather
 ```js
 function F(...obj1{par1a, par1b}, ...obj2{par2a, par2b}) {
     // function body
