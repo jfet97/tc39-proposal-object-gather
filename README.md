@@ -4,8 +4,9 @@
 This is a proposal to allow gathering one ore more __specified__ arguments into one or more objects when a function is called.
 It's possible to gather some or all arguments into an array because there is no need to provide a key for each argument: array are objects that use numeric values as keys. To enable sort of object gather in parameters lists is mandatory to provide keys.
 
-## Normal object gather
-This syntax use the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list to directly create a non constant object (identifiers in a parameter list are never constant) that gather all the arguments present into the list. 
+## Proposal's details
+### The object gather
+This syntax use the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list to directly create a non constant object (identifiers in a parameter list are never constant) that gather all the parameters present into the list. 
 ```js
 function F(...obj{par1, par2}) {
   obj; // {par1: .., par2: ..}
@@ -20,6 +21,16 @@ F(arg1, arg2);
 ```
 \
 &nbsp;
+Of course if we supply less arguments than requested, corresponding props will be undefined:
+```js
+function F(...obj{par1, par2, par3}) {
+  obj; // {par1: .., par2: .., par3:..}
+}
+```
+```js
+F(arg1); // 'obj.par2' and 'obj.par3' will be undefined
+```
+### object gather + array rest
 We can still use the array rest operator in multiple ways:
 1. After the object gather
 ```js
