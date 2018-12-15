@@ -6,7 +6,7 @@ It's possible to gather some or all arguments into an array because there is no 
 
 ## Proposal's details
 ### The object gather
-This syntax use the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list to directly create a non constant object (identifiers in a parameter list are never constant) that gather all the parameters present into its list. 
+This syntax use the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list - that acts also as parameter list - to directly create a non constant object (identifiers in a parameter list are never constant) that gather all the parameters present into its list. 
 ```js
 function F(...obj{par1, par2}) {
   obj; // {par1: .., par2: ..}
