@@ -105,6 +105,25 @@ F(arg1, arg2, arg3, arg4);
 // 'obj2' will gather arg3 and arg4
 ```
 
+1. Nested object gathers
+```js
+function F(...obj{par1, par2, ...obj2{par3, par4}}) {
+  obj; // {par1: .., par2: .., obj2: {par3: .., par4: ..} }
+  
+  arguments[0] == obj.par1; // true
+  arguments[1] == obj.par2; // true
+  arguments[2] == obj.obj2.par3; // true
+  arguments[3] == obj.obj2.par4; // true
+  arguments[4] == void 0; // true
+}
+```
+Here the function call:
+```js
+F(arg1, arg2, arg3, arg4); 
+// 'obj' will gather arg1 and arg2 directly
+// 'obj' will gather arg3 and arg4 into its 'obj2' object prop
+```
+
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
 * Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them:
