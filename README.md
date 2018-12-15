@@ -18,7 +18,8 @@ function F(...obj{par1, par2}) {
 }
 ```
 It might be said that the object is an __implicit__ parameter. On the other hand the key list contains all the __explicit__ parameters that have to be passed and will populate the `arguments` array-like.
-That function will be called as we call a function that use the array rest. This is one strength of the proposal because the call site remains clean:
+That function will be called as we call a function that uses the array rest.\
+This is one strength of the proposal because the call site remains clean:
 ```js
 F(arg1, arg2);
 ```
