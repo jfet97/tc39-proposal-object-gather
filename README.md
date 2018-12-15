@@ -17,7 +17,7 @@ function F(...obj{par1, par2}) {
 }
 ```
 Like the array rest situation, `arguments` will contain each argument.
-That function will be called as we call a function that use the array rest:
+That function will be called as we call a function that use the array rest. This is one strength of the proposal because the call site remains clean:
 ```js
 F(arg1, arg2);
 ```
@@ -76,7 +76,7 @@ F(arg1, arg2, arg3, arg4, arg5);
 // 'obj' will gather arg1 and arg2 directly and all the other params into its 'array' prop
 ```
 
-__We cannot add other parameters in the function signature if we use the array rest inside an object gather:__
+__We cannot add any parameters in the function signature if we use the array rest inside an object gather:__
 ```js
 function F(...obj{par1, par2, ...array}, ...array2) {
     // Error: array2 couldn't be populated
@@ -105,7 +105,7 @@ F(arg1, arg2, arg3, arg4);
 // 'obj2' will gather arg3 and arg4
 ```
 
-1. Nested object gathers
+2. Nested object gathers
 ```js
 function F(...obj{par1, par2, ...obj2{par3, par4}}) {
   obj; // {par1: .., par2: .., obj2: {par3: .., par4: ..} }
@@ -123,6 +123,33 @@ F(arg1, arg2, arg3, arg4);
 // 'obj' will gather arg1 and arg2 directly
 // 'obj' will gather arg3 and arg4 into its 'obj2' object prop
 ```
+&nbsp;
+### Special case: this object gather
+In constructor functions, and in the `constructor` method of classes, the object gather syntax could be useful to quickly assign all parameters to the `this` object:
+```js
+function F(...this{par1, par2, par3}) {
+  this; // {par1: .., par2: .., par3: ..}
+  
+  arguments[0] == this.par1; // true
+  arguments[1] == this.par2; // true
+  arguments[2] == this.par3; // true
+  arguments[3] == void 0; // true
+}
+```
+Here the weel know function call:
+```js
+F(arg1, arg2, arg3); 
+// 'this' will gather all the arguments
+```
+\
+__We cannot use this syntax in subclasses because of the prior super() call:__
+```js
+function F(...this{par1, par2, par3}) {
+  //  ReferenceError: must call super constructor before using |this| in ... class constructor
+}
+```
+
+
 
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
