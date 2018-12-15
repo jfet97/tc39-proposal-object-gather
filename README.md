@@ -138,7 +138,7 @@ function F(...this{par1, par2, par3}) {
 ```
 Here the weel know function call:
 ```js
-F(arg1, arg2, arg3); 
+new F(arg1, arg2, arg3); 
 // 'this' will gather all the arguments
 ```
 \
