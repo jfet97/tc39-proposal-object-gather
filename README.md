@@ -32,6 +32,22 @@ function F(...obj{par1, par2, par3}) {
 F(arg1); // 'obj.par2' and 'obj.par3' will be undefined
 ```
 &nbsp;
+### The object gather + other parameters
+Anyway itwill be possible to not gather all parameters:
+```js
+function F(par1, ...obj{par2, par3}, par4) {
+  par1; // ..
+  obj; // {par2: .., par3: ..}
+  par4; // ..
+  
+  arguments[0] == par1; // true
+  arguments[1] == obj.par2; // true
+  arguments[2] == obj.par3; // true
+  arguments[3] == par4; // true
+  arguments[4] == void 0; // true
+}
+```
+&nbsp;
 ### The object gather + array rest
 We can still use the array rest operator in multiple ways:
 1. After the object gather
