@@ -177,7 +177,7 @@ constructor(...this{par1, par2, par3}) {
 
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
-* It allows us to direclty map function arguments to object properties in lexicographic order.
+* It allows us to directly map function arguments to object properties in lexicographic order.
 * It provides a fast and unequivocal way to construct object using parameters that could be easily optimized by the engine.
 * It provides a fast and clean way to create common constructor functions. 
 * Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them:
