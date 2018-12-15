@@ -8,7 +8,8 @@ To enable sort of object gathering in parameters lists is mandatory to provide k
 
 ## Proposal details
 ### Object gather
-This syntax uses the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list - that acts also as parameter list - to directly create a non constant object (identifiers in a normal parameter list are never constant) that gathers all the parameters present into its list.
+This syntax uses the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list - that acts also as parameter list - to directly create a non constant object (identifiers in a normal parameter list are never constant) that gathers all the parameters present into its list.\
+Note taht destructuring is not involved.
 ```js
 function F(...obj{par1, par2}) {
   obj; // {par1: .., par2: ..}
