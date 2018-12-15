@@ -149,7 +149,6 @@ constructor(...this{par1, par2, par3}) {
 }
 ```
 \
-
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
 * It provides a fast and unequivocal way to construct object using parameters that could be easily optimized by the engine.
