@@ -59,6 +59,7 @@ function F(...obj{par1, par2}, ...array) {
   arguments[0] == obj.par1; // true
   arguments[1] == obj.par2; // true
   arguments[2] == array[0]; // true
+  arguments[3] == array[1]; // true
 }
 ```
 Here the function call:
