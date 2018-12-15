@@ -126,6 +126,7 @@ F(arg1, arg2, arg3, arg4);
 
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
+* It provides a fast and unequivocal way to construct object using parameters that could be easily optimized by the engine. 
 * Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them:
 
 
