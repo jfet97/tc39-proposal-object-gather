@@ -147,7 +147,8 @@ constructor(...this{par1, par2, par3}) {
   //  ReferenceError: must call super constructor before using |this| in ... class constructor
 }
 ```
-\
+
+
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
 * It provides a fast and unequivocal way to construct object using parameters that could be easily optimized by the engine.
