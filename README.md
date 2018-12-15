@@ -26,7 +26,7 @@ F(arg1, arg2);
 Of course if we supply less arguments than requested, corresponding props will be undefined:
 ```js
 function F(...obj{par1, par2, par3}) {
-  obj; // {par1: .., par2: .., par3:..}
+  obj; // {par1: .., par2: .., par3: ..}
 }
 ```
 ```js
