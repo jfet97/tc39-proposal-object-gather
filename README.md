@@ -33,7 +33,7 @@ F(arg1); // 'obj.par2' and 'obj.par3' will be undefined
 ```
 &nbsp;
 ### The object gather + other parameters
-Anyway itwill be possible to not gather all parameters:
+Anyway it will be possible to not gather all parameters:
 ```js
 function F(par1, ...obj{par2, par3}, par4) {
   par1; // ..
