@@ -172,7 +172,7 @@ __We cannot use this syntax in subclasses because of the prior super() call:__
 constructor(...this{par1, par2, par3}) {
   //  ReferenceError: must call super constructor before using |this| in ... class constructor
 }
-```\
+```
 \
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
@@ -230,7 +230,7 @@ function constructor(par1, par2, par3, ..., parN){
 Here we are creating and destroying in a short time an object, __copying__ each value two times: from the parameters to the object, then from the object to `this`. It is also present a function call to `Object.assign`.\
 \
 Obviously not all the alternatives have been considered, but each of them presents one or more of the aforementioned problems.\
-\
+
 ## How could the syntax be transpiled?
 For the sake of argument we can assert that Babel could not follow a DRY approach transpiling our code, giving priority to a faster and less memory needy solution. Probably the solutions tagged with _annoying identifiers repetitions_ are the best:
 
