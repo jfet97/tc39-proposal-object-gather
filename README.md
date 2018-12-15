@@ -22,7 +22,6 @@ That function will be called as we call a function that use the array rest. This
 F(arg1, arg2);
 ```
 \
-&nbsp;
 Of course if we supply less arguments than requested, corresponding props will be undefined:
 ```js
 function F(...obj{par1, par2, par3}) {
