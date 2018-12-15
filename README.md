@@ -10,6 +10,7 @@ This syntax use the well know gather/rest operator `...` in conjunction with the
 ```js
 function F(...obj{par1, par2}) {
   obj; // {par1: .., par2: ..}
+  
   arguments[0] == obj.par1; // true
   arguments[1] == obj.par2; // true
 }
@@ -38,6 +39,7 @@ We can still use the array rest operator in multiple ways:
 function F(...obj{par1, par2}, ...array) {
   obj; // {par1: .., par2: ..}
   array; // [.., .., .., ...]
+  
   arguments[0] == obj.par1; // true
   arguments[1] == obj.par2; // true
   arguments[2] == array[0]; // true
@@ -61,6 +63,7 @@ function F(...array, ...obj{par1, par2}) {
 ```js
 function F(...obj{par1, par2, ...array}) {
   obj; // {par1: .., par2: .., array: [.., .., .., ...]}
+  
   arguments[0] == obj.par1; // true
   arguments[1] == obj.par2; // true
   arguments[2] == obj.array[0]; // true
@@ -82,6 +85,24 @@ function F(...obj{par1, par2, ...array}, ...array2) {
 ### The object gather + object gather
 More than one _object gather_ could be used toghether, mainly in two ways:
 1. Sibling object gathers
+```js
+function F(...obj{par1, par2}, ...obj2{par3, par4}) {
+  obj; // {par1: .., par2: ..}
+  obj2; // {par3: .., par4: ..}
+  
+  arguments[0] == obj.par1; // true
+  arguments[1] == obj.par2; // true
+  arguments[2] == obj2.par3; // true
+  arguments[3] == obj2.par4; // true
+  arguments[4] == void 0; // true
+}
+```
+Here the function call:
+```js
+F(arg1, arg2, arg3, arg4); 
+// 'obj' will gather arg1 and arg2
+// 'obj2' will gather arg3 and arg4
+```
 
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
