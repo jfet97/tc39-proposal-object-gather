@@ -30,7 +30,6 @@ function F(...obj{par1, par2, par3}) {
 ```js
 F(arg1); // 'obj.par2' and 'obj.par3' will be undefined
 ```
-\
 &nbsp;
 ### The object gather + array rest
 We can still use the array rest operator in multiple ways:
@@ -79,7 +78,6 @@ function F(...obj{par1, par2, ...array}, ...array2) {
     // Error: array2 couldn't be populated
 }
 ```
-\
 &nbsp;
 ### The object gather + object gather
 More than one _object gather_ could be used toghether, mainly in two ways:
