@@ -7,7 +7,7 @@ It's possible to gather some or all arguments into an array because there is no 
 
 ## Proposal's details
 ### The object gather
-This syntax use the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list - that acts also as parameter list - to directly create a non constant object (identifiers in a parameter list are never constant) that gather all the parameters present into its list. 
+This syntax use the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list - that acts also as parameter list - to directly create a non constant object (identifiers in a normal parameter list are never constant) that gather all the parameters present into its list.
 ```js
 function F(...obj{par1, par2}) {
   obj; // {par1: .., par2: ..}
@@ -16,7 +16,7 @@ function F(...obj{par1, par2}) {
   arguments[1] == obj.par2; // true
 }
 ```
-Like the array rest situation, `arguments` will contain each argument.
+It might be said that the object is an __implicit__ parameter. On the other hand the key list contains all the __explicit__ parameters that have to be passed and will populate the `arguments` array-like.
 That function will be called as we call a function that use the array rest. This is one strength of the proposal because the call site remains clean:
 ```js
 F(arg1, arg2);
