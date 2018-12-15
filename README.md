@@ -32,7 +32,7 @@ function F(...obj{par1, par2, par3}) {
 F(arg1); // 'obj.par2' and 'obj.par3' will be undefined
 ```
 &nbsp;
-### The object gather + other parameters
+### Object gather + other parameters
 It will be possible to not gather all parameters:
 ```js
 function F(par1, ...obj{par2, par3}, par4) {
@@ -48,7 +48,7 @@ function F(par1, ...obj{par2, par3}, par4) {
 }
 ```
 &nbsp;
-### The object gather + array rest
+### Object gather + array rest
 We can still use the array rest operator in multiple ways:
 1. After the object gather
 ```js
@@ -70,7 +70,7 @@ F(arg1, arg2, arg3, arg4, arg5);
 // 'array' will gather or the other parameters
 ```
 
-__But not before the object gather__:
+__But not before object gather__:
 ```js
 function F(...array, ...obj{par1, par2}) {
     // Error: obj couldn't be populated
@@ -93,14 +93,14 @@ F(arg1, arg2, arg3, arg4, arg5);
 // 'obj' will gather arg1 and arg2 directly and all the other params into its 'array' prop
 ```
 
-__We cannot add any parameters in the function signature if we use the array rest inside an object gather:__
+__We cannot add any parameters in the function signature if we use the array rest inside object gather:__
 ```js
 function F(...obj{par1, par2, ...array}, ...array2) {
     // Error: array2 couldn't be populated
 }
 ```
 &nbsp;
-### The object gather + object gather
+### Object gather + object gather
 More than one _object gather_ could be used toghether, mainly in two ways:
 1. Sibling object gathers
 ```js
