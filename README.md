@@ -5,8 +5,8 @@ This is a proposal to allow gathering one ore more __specified__ arguments into 
 It's already possible to gather some or all arguments into an array because there is no need to provide a key for each argument: array are objects that use numeric values as keys. To enable sort of object gathering in parameters lists is mandatory to provide keys.
 
 
-## Proposal's details
-### The object gather
+## Proposal details
+### Object gather
 This syntax use the well know gather/rest operator `...` in conjunction with the block syntax `{}` cointaining a key list - that acts also as parameter list - to directly create a non constant object (identifiers in a normal parameter list are never constant) that gathers all the parameters present into its list.
 ```js
 function F(...obj{par1, par2}) {
