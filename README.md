@@ -30,7 +30,9 @@ function F(...obj{par1, par2, par3}) {
 ```js
 F(arg1); // 'obj.par2' and 'obj.par3' will be undefined
 ```
-### object gather + array rest
+\
+&nbsp;
+### The object gather + array rest
 We can still use the array rest operator in multiple ways:
 1. After the object gather
 ```js
@@ -77,6 +79,11 @@ function F(...obj{par1, par2, ...array}, ...array2) {
     // Error: array2 couldn't be populated
 }
 ```
+\
+&nbsp;
+### The object gather + object gather
+More than one _object gather_ could be used toghether, mainly in two ways:
+1. Sibling object gathers
 
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
