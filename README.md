@@ -107,21 +107,21 @@ F(arg1, arg2, arg3, arg4);
 
 2. Nested object gathers
 ```js
-function F(...obj{par1, par2, ...obj2{par3, par4}}) {
-  obj; // {par1: .., par2: .., obj2: {par3: .., par4: ..} }
+function F(...obj{par1, ...obj2{par2, par3}, par4}) {
+  obj; // {par1: .., obj2: {par2: .., par3: ..}, par4: .. }
   
   arguments[0] == obj.par1; // true
-  arguments[1] == obj.par2; // true
+  arguments[1] == obj.obj2.par2; // true
   arguments[2] == obj.obj2.par3; // true
-  arguments[3] == obj.obj2.par4; // true
+  arguments[3] == obj.par4; // true
   arguments[4] == void 0; // true
 }
 ```
 Here the function call:
 ```js
 F(arg1, arg2, arg3, arg4); 
-// 'obj' will gather arg1 and arg2 directly
-// 'obj' will gather arg3 and arg4 into its 'obj2' object prop
+// 'obj' will gather arg1 and arg4 directly
+// 'obj' will gather arg2 and arg3 into its 'obj2' object prop
 ```
 &nbsp;
 ### Special case: this object gather
@@ -148,12 +148,12 @@ constructor(...this{par1, par2, par3}) {
   //  ReferenceError: must call super constructor before using |this| in ... class constructor
 }
 ```
-
-
-
+\
+\
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
-* It provides a fast and unequivocal way to construct object using parameters that could be easily optimized by the engine. 
+* It provides a fast and unequivocal way to construct object using parameters that could be easily optimized by the engine.
+* It provides a fast and clean way to create common constructor functions. 
 * Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them:
 
 
@@ -223,6 +223,20 @@ function F(par1a, par1b, par2a, par2b) {
 }
 ```
 Parameters could be reassigned so we use `let` instead of `const`.
+
+### nested object gather
+```js
+function F(...obj{par1, ...obj2{par2, par3}, par4}) {
+    // function body
+}
+```
+could be transpiled into:
+```js
+function F(par1, par2, par3, par4) {
+    let obj1 = {par1, obj2: {par2, par3}, par4};
+    // function body
+}
+```
 
 ### this gather
 ```js
