@@ -1,7 +1,7 @@
 # tc39-proposal-object-gather
 ## Proposal: Object gather in parameters lists
 
-This is a proposal to allow gathering one ore more __specified__ arguments into one or more objects when a function is called.
+This is a proposal to allow gathering one ore more __specified__ arguments into one or more objects when a function is invoked.
 It's already possible to gather some or all arguments into an array because there is no need to provide a key for each argument: array are objects that use numeric values as keys. To enable sort of object gathering in parameters lists is mandatory to provide keys.
 
 
