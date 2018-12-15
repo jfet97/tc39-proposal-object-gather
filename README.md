@@ -111,7 +111,7 @@ function F(...obj{par1, par2, ...array}, ...array2) {
 &nbsp;
 ### Object gather + object gather
 More than one _object gather_ could be used toghether, mainly in two ways:
-1. Sibling object gathers
+1. Sibling objects gather
 ```js
 function F(...obj{par1, par2}, ...obj2{par3, par4}) {
   obj; // {par1: .., par2: ..}
@@ -131,7 +131,7 @@ F(arg1, arg2, arg3, arg4);
 // 'obj2' will gather arg3 and arg4
 ```
 
-2. Nested object gathers
+2. Nested objects gather
 ```js
 function F(...obj{par1, ...obj2{par2, par3}, par4}) {
   obj; // {par1: .., obj2: {par2: .., par3: ..}, par4: .. }
