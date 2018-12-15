@@ -48,6 +48,12 @@ function F(par1, ...obj{par2, par3}, par4) {
   arguments[4] == void 0; // true
 }
 ```
+Here the function call:
+```js
+F(arg1, arg2, arg3, arg4); 
+// 'obj' will gather arg2 and arg3
+// arg1and arg3 will populate normal parameters
+```
 &nbsp;
 ### Object gather + array rest
 We can still use the array rest operator in multiple ways:
