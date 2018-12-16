@@ -177,10 +177,10 @@ constructor(...this{par1, par2, par3}) {
 
 ## Reasons
 * Currently this type of gather is not allowed in Javascript.
-* It allows us to directly map function arguments to object properties in lexicographic order.
+* It allows us to directly map function arguments to object properties in a programmed order.
 * It provides a fast and unequivocal way to construct object using parameters that could be easily optimized by the engine.
 * It provides a fast and clean way to create common constructor functions. 
-* Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions. Let's briefly see them:
+* Current solutions imply one or more of the following: changes to the function signature, useless objects creations, annoying identifiers repetitions or an additional function call. Let's briefly see them:
 
 
 ### annoying identifiers repetitions
@@ -211,7 +211,7 @@ F({arg1, arg2, arg3, ..., argN});
 It could seem a minor issue.
 But why if the object is a construct necessary only for function's internal needs have we to create it in the call site? 
 
-### annoying identifiers repetitions || useless objects creations
+### annoying identifiers repetitions || useless objects creations + additional function call
 Them are evident when we are in a constructor function:
 ```js
 function constructor(par1, par2, par3, ..., parN){
