@@ -198,7 +198,7 @@ function F(par1, par2, par3, ..., parN){
 ```
 
 ### changes to the function signature
-To avoid above repetitions we are forced to change the function signature (and this is something I'd like to avoid):
+To avoid above repetitions we are forced to change the function signature:
 ```js
 function F(obj){
   // function body
